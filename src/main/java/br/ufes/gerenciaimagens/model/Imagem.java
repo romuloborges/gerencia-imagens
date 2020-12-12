@@ -1,10 +1,6 @@
 package br.ufes.gerenciaimagens.model;
 
 import br.ufes.gerenciaimagens.model.interfaces.IImagem;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,6 +13,10 @@ public class Imagem implements IImagem {
     private String caminho;
     private boolean excluida;
 
+    public Imagem() {
+        
+    }
+    
     public Imagem(Long id, String caminho, boolean excluida) {
         this.id = id;
         this.caminho = caminho;
@@ -25,17 +25,23 @@ public class Imagem implements IImagem {
     
     @Override
     public ImageIcon getImageIcon() throws Exception {
-        BufferedImage img = ImageIO.read(new File(getCaminho()));
-
-        return new ImageIcon(img);
+        return new ImageIcon(getCaminho());
     }
 
     public Long getId() {
         return id;
     }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCaminho() {
         return caminho;
+    }
+    
+    public void setCaminho(String caminho) {
+        this.caminho = caminho;
     }
 
     public boolean isExcluida() {
