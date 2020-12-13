@@ -1,4 +1,4 @@
-package br.ufes.gerenciaimagens.presenter.listausuario.manterusuario;
+package br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.criptografasenhautil;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -15,7 +15,7 @@ public class CriptografaSenhaUtil {
     private CriptografaSenhaUtil() {
     }
     
-    public CriptografaSenhaUtil getInstancia() {
+    public static CriptografaSenhaUtil getInstancia() {
         if (instancia == null) {
             instancia = new CriptografaSenhaUtil();
         }
