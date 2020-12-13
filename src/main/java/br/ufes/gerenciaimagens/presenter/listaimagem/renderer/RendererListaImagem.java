@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -28,6 +29,7 @@ public class RendererListaImagem extends DefaultListCellRenderer {
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         
         label.setText("");
+        label.setHorizontalAlignment(SwingConstants.CENTER);
         
         try {
             label.setIcon(mapPathImagem.get((String) value).getImageIcon());
