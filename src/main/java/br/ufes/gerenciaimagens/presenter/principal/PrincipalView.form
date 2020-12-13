@@ -93,7 +93,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelUsuarioLogado" min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="labelUsuarioLogado" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>

@@ -23,8 +23,8 @@ public class ListaImagemPresenter extends BaseInternalFramePresenter<ListaImagem
     private ImagemService imagemService;
     private Map<String, IImagem> mapPathImagem;
 
-    public ListaImagemPresenter(JDesktopPane desktop) {
-        super(desktop, new ListaImagemView());
+    public ListaImagemPresenter(JDesktopPane desktop, Long idUsuarioLogado) {
+        super(desktop, new ListaImagemView(), idUsuarioLogado);
 
         imagemService = new ImagemService();
 

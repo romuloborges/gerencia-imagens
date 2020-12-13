@@ -1,4 +1,4 @@
-package br.ufes.gerenciaimagens.presenter;
+package br.ufes.gerenciaimagens.presenter.base;
 
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
@@ -12,9 +12,10 @@ public abstract class BaseInternalFramePresenter<T extends JInternalFrame> {
     
     private T view;
     private final JDesktopPane container;
+    private Long idUsuarioLogado;
     
-    public BaseInternalFramePresenter(JDesktopPane container, T view) {
-        if (container == null || view == null) {
+    public BaseInternalFramePresenter(JDesktopPane container, T view, Long idUsuarioLogado) {
+        if (container == null || view == null || idUsuarioLogado == null) {
             throw new RuntimeException("Passagem nula para construção da presenter");
         }
         this.container = container;

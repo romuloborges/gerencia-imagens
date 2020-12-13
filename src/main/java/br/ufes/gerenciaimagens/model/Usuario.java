@@ -29,6 +29,10 @@ public class Usuario {
         this.nome = nome;
         this.tipo = tipo;
     }
+    
+    public Long getId() {
+        return id;
+    }
 
     public String getNome() {
         return nome;

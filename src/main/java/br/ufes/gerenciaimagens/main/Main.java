@@ -1,5 +1,7 @@
 package br.ufes.gerenciaimagens.main;
 
+import br.ufes.gerenciaimagens.model.TipoUsuario;
+import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.principal.PrincipalPresenter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +18,7 @@ public class Main {
         Properties prop = app.loadPropertiesFile("config.properties");
         System.setProperty("db.name", prop.getProperty("db.name"));
         
-        new PrincipalPresenter();
+        new PrincipalPresenter(new Usuario(1L, "romulo", "123", "Rômulo", TipoUsuario.NORMAL));
     }
     
     public Properties loadPropertiesFile(String filePath) {
@@ -25,7 +27,7 @@ public class Main {
         try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
             prop.load(resourceAsStream);
         } catch (IOException e) {
-            System.err.println("Unable to load properties file : " + filePath);
+            System.err.println("Não foi possível carregar o arquivo de properties : " + filePath);
         }
 
         return prop;
