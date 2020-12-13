@@ -2,6 +2,7 @@ package br.ufes.gerenciaimagens.presenter.principal;
 
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.listaimagem.ListaImagemPresenter;
+import br.ufes.gerenciaimagens.presenter.listausuario.ListaUsuarioPresenter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -30,6 +31,10 @@ public class PrincipalPresenter {
         
         this.view.getItemListarImagem().addActionListener((ae) -> {
             new ListaImagemPresenter(this.view.getDesktop(), usuarioLogado.getId());
+        });
+        
+        this.view.getItemManterUsuarios().addActionListener((ae) -> {
+            new ListaUsuarioPresenter(this.view.getDesktop(), usuarioLogado.getId());
         });
         
         configurarLabelUsuarioLogado();

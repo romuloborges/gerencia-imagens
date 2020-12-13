@@ -23,6 +23,7 @@ public class ListaUsuarioPresenter extends BaseInternalFramePresenter<ListaUsuar
     public ListaUsuarioPresenter(JDesktopPane desktop, Long idUsuarioLogado) {
         super(desktop, new ListaUsuarioView(), idUsuarioLogado);
         
+        usuarioService = new UsuarioService();
         removeListeners();
         initListeners();
         configuraTabelaUsuarios();
