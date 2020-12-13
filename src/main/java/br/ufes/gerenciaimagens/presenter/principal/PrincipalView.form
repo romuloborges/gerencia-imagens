@@ -23,7 +23,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemManterUsuarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manter usu&#xe1;rios"/>
+                <Property name="text" type="java.lang.String" value="Listar usu&#xe1;rios"/>
               </Properties>
             </MenuItem>
           </SubComponents>

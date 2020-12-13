@@ -11,6 +11,7 @@ public class Usuario {
     private String senha;
     private String nome;
     private TipoUsuario tipo;
+    private boolean excluido;
 
     public Usuario() {
     }
@@ -40,6 +41,46 @@ public class Usuario {
 
     public String getDescricaoTipo() {
         return tipo.getDescricao();
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public boolean isExcluido() {
+        return excluido;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setExcluido(boolean excluido) {
+        this.excluido = excluido;
     }
     
 }

@@ -94,7 +94,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
         menuUsuario.setText("Usuário");
 
-        itemManterUsuarios.setText("Manter usuários");
+        itemManterUsuarios.setText("Listar usuários");
         menuUsuario.add(itemManterUsuarios);
 
         jMenuBar1.add(menuUsuario);
