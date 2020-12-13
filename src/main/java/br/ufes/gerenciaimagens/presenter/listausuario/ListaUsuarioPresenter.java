@@ -2,7 +2,9 @@ package br.ufes.gerenciaimagens.presenter.listausuario;
 
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
+import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.ManterUsuarioPresenter;
 import br.ufes.gerenciaimagens.service.UsuarioService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
@@ -27,6 +29,7 @@ public class ListaUsuarioPresenter extends BaseInternalFramePresenter<ListaUsuar
         removeListeners();
         initListeners();
         configuraTabelaUsuarios();
+        usuarios = new ArrayList<>();
         
         getView().setVisible(true);
     }
@@ -50,10 +53,9 @@ public class ListaUsuarioPresenter extends BaseInternalFramePresenter<ListaUsuar
     private void removeListeners() {
         removerActionListeners(getView().getButtonBuscar());
         removerActionListeners(getView().getButtonNovo());
-        removerActionListeners(getView().getButtonEditar());
+        removerActionListeners(getView().getButtonVisualizar());
         removerActionListeners(getView().getButtonDefinirPermissoes());
         removerActionListeners(getView().getButtonExcluir());
-        
     }
     
     private void removerActionListeners(JButton btn) {
@@ -72,15 +74,15 @@ public class ListaUsuarioPresenter extends BaseInternalFramePresenter<ListaUsuar
         });
         
         getView().getButtonNovo().addActionListener((ae) -> {
-            
+            new ManterUsuarioPresenter(getContainer(), getIdUsuarioLogado());
         });
         
-        getView().getButtonEditar().addActionListener((ae) -> {
-            
+        getView().getButtonVisualizar().addActionListener((ae) -> {
+            visualizar();
         });
         
         getView().getButtonExcluir().addActionListener((ae) -> {
-            
+            excluir();
         });
         
         getView().getButtonDefinirPermissoes().addActionListener((ae) -> {
@@ -99,6 +101,35 @@ public class ListaUsuarioPresenter extends BaseInternalFramePresenter<ListaUsuar
         
         for(Usuario usuario : usuarios) {
             tmUsuarios.addRow(new String[]{ usuario.getNome(), usuario.getLogin(), usuario.getDescricaoTipo() });
+        }
+    }
+    
+    private void visualizar() {
+        int linhaSelecionada = getView().getTableUsuarios().getSelectedRow();
+        if (linhaSelecionada >= 0) {
+            Usuario usuario = usuarios.get(linhaSelecionada);
+            new ManterUsuarioPresenter(getContainer(), getIdUsuarioLogado(), usuario);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um usuário para visualizar", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    private void excluir() {
+        int linhaSelecionada = getView().getTableUsuarios().getSelectedRow();
+        if (linhaSelecionada >= 0) {
+            try {
+                int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o usuário?", "", JOptionPane.YES_NO_OPTION);
+            
+                if (opcao == 0) {
+                    Usuario usuario = usuarios.get(linhaSelecionada);
+                    usuarioService.delete(usuario.getId());
+                    JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao excluir", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um usuário para visualizar", "", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     

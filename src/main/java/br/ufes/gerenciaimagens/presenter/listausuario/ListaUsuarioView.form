@@ -6,7 +6,6 @@
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" value="Lista de Usu&#xe1;rios"/>
-    <Property name="maximum" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -35,7 +34,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="buttonDefinirPermissoes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonEditar" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonVisualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonNovo" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -69,7 +68,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="buttonExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonNovo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonVisualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonDefinirPermissoes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -115,14 +114,14 @@
         <Property name="text" type="java.lang.String" value="Definir permiss&#xf5;es"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonEditar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Editar"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nome"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonVisualizar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Visualizar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textNome">

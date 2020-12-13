@@ -36,8 +36,8 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
         buttonExcluir = new javax.swing.JButton();
         buttonNovo = new javax.swing.JButton();
         buttonDefinirPermissoes = new javax.swing.JButton();
-        buttonEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        buttonVisualizar = new javax.swing.JButton();
         textNome = new javax.swing.JTextField();
         buttonBuscar = new javax.swing.JButton();
 
@@ -65,9 +65,9 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
 
         buttonDefinirPermissoes.setText("Definir permissões");
 
-        buttonEditar.setText("Editar");
-
         jLabel1.setText("Nome");
+
+        buttonVisualizar.setText("Visualizar");
 
         buttonBuscar.setText("Buscar");
 
@@ -84,7 +84,7 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonDefinirPermissoes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonEditar)
+                        .addComponent(buttonVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonNovo))
                     .addGroup(layout.createSequentialGroup()
@@ -111,7 +111,7 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonExcluir)
                     .addComponent(buttonNovo)
-                    .addComponent(buttonEditar)
+                    .addComponent(buttonVisualizar)
                     .addComponent(buttonDefinirPermissoes))
                 .addContainerGap())
         );
@@ -131,8 +131,8 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
         return buttonDefinirPermissoes;
     }
 
-    public JButton getButtonEditar() {
-        return buttonEditar;
+    public JButton getButtonVisualizar() {
+        return buttonVisualizar;
     }
 
     public JButton getButtonExcluir() {
@@ -150,9 +150,9 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBuscar;
     private javax.swing.JButton buttonDefinirPermissoes;
-    private javax.swing.JButton buttonEditar;
     private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonNovo;
+    private javax.swing.JButton buttonVisualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableUsuarios;

@@ -19,4 +19,9 @@ public enum TipoUsuario {
         return descricao;
     }
     
+    @Override
+    public String toString() {
+        return descricao;
+    }
+    
 }
