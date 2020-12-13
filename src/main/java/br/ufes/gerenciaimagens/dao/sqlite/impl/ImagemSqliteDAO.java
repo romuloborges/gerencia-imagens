@@ -45,7 +45,7 @@ public class ImagemSqliteDAO implements IImagemDAO {
             }
 
             this.manager.fechaTransacao();
-            this.manager.close();
+            this.manager.close(conn, ps, rs);
             
             return imagens;
         } catch (Exception ex) {
