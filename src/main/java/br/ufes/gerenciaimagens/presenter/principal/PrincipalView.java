@@ -1,4 +1,4 @@
-package br.ufes.gerenciaimagens.presenter;
+package br.ufes.gerenciaimagens.presenter.principal;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;

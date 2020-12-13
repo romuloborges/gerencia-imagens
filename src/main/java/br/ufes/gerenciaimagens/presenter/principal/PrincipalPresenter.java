@@ -1,4 +1,4 @@
-package br.ufes.gerenciaimagens.presenter;
+package br.ufes.gerenciaimagens.presenter.principal;
 
 import br.ufes.gerenciaimagens.presenter.listaimagem.ListaImagemPresenter;
 import javax.swing.JFrame;
