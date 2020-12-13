@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class ImagemSqliteDAO implements IImagemDAO {
     
-    private final SqliteManager manager;
+    private SqliteManager manager;
     
     public ImagemSqliteDAO() {
-        this.manager = SqliteManager.getInstancia();
+        this.manager = new SqliteManager();
     }
 
     @Override

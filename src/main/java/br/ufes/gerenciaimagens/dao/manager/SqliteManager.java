@@ -13,19 +13,6 @@ import java.sql.SQLException;
 public class SqliteManager {
     
     private Connection conn = null;
-    private static SqliteManager instancia;
-    
-    private SqliteManager() {
-        
-    }
-    
-    public static SqliteManager getInstancia() {
-        if (instancia == null) {
-            instancia = new SqliteManager();
-        }
-        
-        return instancia;
-    }
     
     public Connection conectar() {
         try {

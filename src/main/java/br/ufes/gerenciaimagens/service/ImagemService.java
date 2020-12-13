@@ -12,6 +12,10 @@ import br.ufes.gerenciaimagens.repository.ImagemRepository;
 public class ImagemService {
     
     private ImagemRepository imagemRepository;
+    
+    public ImagemService() {
+        this.imagemRepository = new ImagemRepository();
+    }
 
     public List<Imagem> obterTodasNaoExcluidas() throws Exception {
         return imagemRepository.obterTodasNaoExcluidas();
