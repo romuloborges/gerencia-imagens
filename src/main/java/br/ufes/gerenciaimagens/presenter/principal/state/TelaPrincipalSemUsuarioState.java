@@ -29,13 +29,4 @@ public class TelaPrincipalSemUsuarioState extends TelaPrincipalState {
         new LoginPresenter(principalPresenter, view.getDesktop());
     }
     
-    private void fechaJanelasAbertas() {
-        PrincipalView view = principalPresenter.getView();
-        JDesktopPane desktop = view.getDesktop();
-        
-        for(JInternalFrame frame : desktop.getAllFrames()) {
-            frame.dispose();
-        }
-    }
-    
 }

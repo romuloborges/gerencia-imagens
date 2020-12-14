@@ -4,7 +4,6 @@ import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.principal.state.TelaPrincipalSemUsuarioState;
 import br.ufes.gerenciaimagens.presenter.principal.state.TelaPrincipalState;
 import javax.swing.JFrame;
-import javax.swing.SwingConstants;
 
 /**
  *

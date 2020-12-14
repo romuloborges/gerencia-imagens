@@ -1,12 +1,10 @@
 package br.ufes.gerenciaimagens.presenter.login;
 
-import br.ufes.gerenciaimagens.model.TipoUsuario;
-import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
-import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.criptografasenhautil.CriptografaSenhaUtil;
+import br.ufes.gerenciaimagens.presenter.login.state.LoginPrimeiroUsuarioState;
+import br.ufes.gerenciaimagens.presenter.login.state.LoginState;
+import br.ufes.gerenciaimagens.presenter.login.state.LoginUsuarioJaExistenteState;
 import br.ufes.gerenciaimagens.presenter.principal.PrincipalPresenter;
-import br.ufes.gerenciaimagens.presenter.principal.state.TelaPrincipalUsuarioAdminState;
-import br.ufes.gerenciaimagens.presenter.principal.state.TelaPrincipalUsuarioNormalState;
 import br.ufes.gerenciaimagens.service.UsuarioService;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
@@ -19,44 +17,37 @@ public class LoginPresenter extends BaseInternalFramePresenter<LoginView> {
     
     private UsuarioService usuarioService;
     private PrincipalPresenter principalPresenter;
+    private LoginState state;
     
     public LoginPresenter(PrincipalPresenter principalPresenter, JDesktopPane desktop) {
         super(desktop, new LoginView());
         this.principalPresenter = principalPresenter;
         
-        initListeners();
         usuarioService = new UsuarioService();
+        initState();
         
         getView().setVisible(true);
     }
     
-    private void initListeners() {
-        getView().getButtonLogar().addActionListener((ae) -> {
-            realizarLogin();
-        });
-    }
-    
-    private void realizarLogin() {
-        LoginView view = getView();
-        String login = view.getTextLogin().getText();
-        String senha = new String(view.getTextSenha().getPassword());
-        
+    private void initState() {
         try {
-            senha = CriptografaSenhaUtil.getInstancia().criptografar(senha);
-            Usuario usuario = usuarioService.getByLogin(login, senha);
-            if (usuario != null && usuario.getId() != null) {
-                view.dispose();
-                if (TipoUsuario.NORMAL.equals(usuario.getTipo())) {
-                    principalPresenter.setState(new TelaPrincipalUsuarioNormalState(principalPresenter, usuario));
-                } else if (TipoUsuario.ADMINISTRADOR.equals(usuario.getTipo())) {
-                    principalPresenter.setState(new TelaPrincipalUsuarioAdminState(principalPresenter, usuario));
-                }
+            if (usuarioService.existeAdministradorAtivo()) {
+                setState(new LoginUsuarioJaExistenteState(this));
             } else {
-                JOptionPane.showMessageDialog(null, "Login Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+                setState(new LoginPrimeiroUsuarioState(this));
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public PrincipalPresenter getPrincipalPresenter() {
+        return principalPresenter;
+    }
+
+    public void setState(LoginState state) {
+        this.state = state;
     }
     
 }

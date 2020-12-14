@@ -6,7 +6,11 @@
 package br.ufes.gerenciaimagens.presenter.login;
 
 import javax.swing.JButton;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -31,17 +35,23 @@ public class LoginView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelLogin = new javax.swing.JLabel();
         textLogin = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        buttonLogar = new javax.swing.JButton();
+        labelSenha = new javax.swing.JLabel();
+        buttonAcao = new javax.swing.JButton();
         textSenha = new javax.swing.JPasswordField();
+        scrollPrimeiroUsuario = new javax.swing.JScrollPane();
+        textPrimeiroUsuario = new javax.swing.JTextArea();
 
-        jLabel1.setText("Login");
+        labelLogin.setText("Login");
 
-        jLabel2.setText("Senha");
+        labelSenha.setText("Senha");
 
-        buttonLogar.setText("Logar");
+        buttonAcao.setText("Logar");
+
+        textPrimeiroUsuario.setColumns(20);
+        textPrimeiroUsuario.setRows(5);
+        scrollPrimeiroUsuario.setViewportView(textPrimeiroUsuario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,37 +62,40 @@ public class LoginView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textSenha)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 318, Short.MAX_VALUE)
-                        .addComponent(buttonLogar))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonAcao))
                     .addComponent(textLogin)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(labelLogin)
+                            .addComponent(labelSenha))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scrollPrimeiroUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(labelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(buttonLogar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPrimeiroUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonAcao)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getButtonLogar() {
-        return buttonLogar;
+    public JButton getButtonAcao() {
+        return buttonAcao;
     }
 
     public JTextField getTextLogin() {
@@ -93,11 +106,33 @@ public class LoginView extends javax.swing.JInternalFrame {
         return textSenha;
     }
 
+    public JLabel getLabelLogin() {
+        return labelLogin;
+    }
+
+    public JTextArea getTextPrimeiroUsuario() {
+        return textPrimeiroUsuario;
+    }
+
+    public JLabel getLabelSenha() {
+        return labelSenha;
+    }
+
+    public JScrollPane getScrollPrimeiroUsuario() {
+        return scrollPrimeiroUsuario;
+    }
+    
+    public JInternalFrame getInternalFrame() {
+        return this;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonLogar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton buttonAcao;
+    private javax.swing.JLabel labelLogin;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JScrollPane scrollPrimeiroUsuario;
     private javax.swing.JTextField textLogin;
+    private javax.swing.JTextArea textPrimeiroUsuario;
     private javax.swing.JPasswordField textSenha;
     // End of variables declaration//GEN-END:variables
 }

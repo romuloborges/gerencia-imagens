@@ -16,5 +16,8 @@ public interface IUsuarioDAO {
     public void delete(Long id) throws Exception;
     public boolean loginExists(String login) throws Exception;
     public List<Usuario> filter(String nome) throws Exception;
+    public boolean existemOutrosAdministradoresAtivos(Long idUsuario) throws Exception;
+    public boolean existemOutrosUsuariosAtivos(Long idUsuario) throws Exception;
+    public boolean existeAdministradorAtivo() throws Exception;
     
 }

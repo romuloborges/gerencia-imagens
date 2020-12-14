@@ -41,6 +41,8 @@ public class PrincipalView extends javax.swing.JFrame {
         itemListarImagem = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenu();
         itemManterUsuarios = new javax.swing.JMenuItem();
+        menuSair = new javax.swing.JMenu();
+        itemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerência de Imagens");
@@ -67,8 +69,8 @@ public class PrincipalView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(buttonNotificacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -95,6 +97,13 @@ public class PrincipalView extends javax.swing.JFrame {
         menuUsuario.add(itemManterUsuarios);
 
         menuBarPrincipal.add(menuUsuario);
+
+        menuSair.setText("Sair");
+
+        itemSair.setText("Sair");
+        menuSair.add(itemSair);
+
+        menuBarPrincipal.add(menuSair);
 
         setJMenuBar(menuBarPrincipal);
 
@@ -151,17 +160,23 @@ public class PrincipalView extends javax.swing.JFrame {
     public JMenu getMenuUsuario() {
         return menuUsuario;
     }
+
+    public JMenuItem getItemSair() {
+        return itemSair;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonNotificacoes;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem itemListarImagem;
     private javax.swing.JMenuItem itemManterUsuarios;
+    private javax.swing.JMenuItem itemSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelUsuarioLogado;
     private javax.swing.JMenuBar menuBarPrincipal;
     private javax.swing.JMenu menuImagem;
+    private javax.swing.JMenu menuSair;
     private javax.swing.JMenu menuUsuario;
     private javax.swing.JPanel panelRodape;
     // End of variables declaration//GEN-END:variables

@@ -44,4 +44,16 @@ public class UsuarioService {
         return usuarioRepository.filter(nome);
     }
     
+    public boolean existemOutrosAdministradoresAtivos(Long idUsuario) throws Exception {
+        return usuarioRepository.existemOutrosAdministradoresAtivos(idUsuario);
+    }
+    
+    public boolean existemOutrosUsuariosAtivos(Long idUsuario) throws Exception {
+        return usuarioRepository.existemOutrosUsuariosAtivos(idUsuario);
+    }
+    
+    public boolean existeAdministradorAtivo() throws Exception {
+        return usuarioRepository.existeAdministradorAtivo();
+    }
+    
 }

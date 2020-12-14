@@ -2,9 +2,11 @@ package br.ufes.gerenciaimagens.presenter.listausuario.manterusuario;
 
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
+import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.IncluirPrimeiroUsuarioState;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.IncluirUsuarioState;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.ManterUsuarioState;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.VisualizarUsuarioState;
+import br.ufes.gerenciaimagens.presenter.principal.PrincipalPresenter;
 import javax.swing.JDesktopPane;
 
 /**
@@ -15,6 +17,22 @@ public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsu
     
     private Usuario usuarioManter;
     private ManterUsuarioState state;
+    private PrincipalPresenter principalPresenter;
+    
+    public ManterUsuarioPresenter(JDesktopPane desktop, PrincipalPresenter principalPresenter) {
+        super(desktop, new ManterUsuarioView());
+        
+        if (principalPresenter == null) {
+            throw new RuntimeException("Principal presenter informada é inválida");
+        }
+        
+        this.principalPresenter = principalPresenter;
+        
+        this.usuarioManter = new Usuario();
+        this.state = new IncluirPrimeiroUsuarioState(this);
+        
+        getView().setVisible(true);
+    }
     
     public ManterUsuarioPresenter(JDesktopPane desktop, Long idUsuarioLogado) {
         super(desktop, new ManterUsuarioView(), idUsuarioLogado);
@@ -47,6 +65,10 @@ public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsu
 
     public void setState(ManterUsuarioState state) {
         this.state = state;
+    }
+
+    public PrincipalPresenter getPrincipalPresenter() {
+        return principalPresenter;
     }
     
 }

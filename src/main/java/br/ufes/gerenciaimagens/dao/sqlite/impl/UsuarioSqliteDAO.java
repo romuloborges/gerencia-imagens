@@ -267,4 +267,108 @@ public class UsuarioSqliteDAO implements IUsuarioDAO {
         }
     }
     
+    @Override
+    public boolean existeAdministradorAtivo() throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;    
+        
+        try {
+            String sql = "SELECT COUNT(id) FROM Usuario WHERE excluido = 0 AND tipo = :tipoAdministrador;";
+
+            conn = this.manager.conectar();
+            this.manager.abreTransacao();
+
+            ps = conn.prepareStatement(sql.toString());
+            ps.setString(1, TipoUsuario.ADMINISTRADOR.name());
+            
+            rs = ps.executeQuery();
+            
+            boolean existemOutrosAdministradores = false;
+            
+            while (rs.next()) {
+                existemOutrosAdministradores = rs.getLong(1) > 0;
+            }
+
+            this.manager.fechaTransacao();
+            this.manager.close(conn, ps, rs);
+
+            return existemOutrosAdministradores;
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close(conn, ps, rs);
+            System.out.println(ex.getMessage());
+            throw new Exception("Erro ao buscar");
+        }
+    }
+    
+    @Override
+    public boolean existemOutrosAdministradoresAtivos(Long idUsuario) throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;    
+        
+        try {
+            String sql = "SELECT COUNT(id) FROM Usuario WHERE id <> :idUsuarioAExcluir AND excluido = 0 AND tipo = :tipoAdministrador;";
+
+            conn = this.manager.conectar();
+            this.manager.abreTransacao();
+
+            ps = conn.prepareStatement(sql.toString());
+            ps.setString(1, TipoUsuario.ADMINISTRADOR.name());
+            
+            rs = ps.executeQuery();
+            
+            boolean existemOutrosAdministradores = false;
+            
+            while (rs.next()) {
+                existemOutrosAdministradores = rs.getLong(1) > 0;
+            }
+
+            this.manager.fechaTransacao();
+            this.manager.close(conn, ps, rs);
+
+            return existemOutrosAdministradores;
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close(conn, ps, rs);
+            System.out.println(ex.getMessage());
+            throw new Exception("Erro ao buscar");
+        }
+    }
+    
+    @Override
+    public boolean existemOutrosUsuariosAtivos(Long idUsuario) throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;    
+        
+        try {
+            String sql = "SELECT COUNT(id) FROM Usuario WHERE id <> :idUsuarioAExcluir AND excluido = 0;";
+
+            conn = this.manager.conectar();
+            this.manager.abreTransacao();
+
+            ps = conn.prepareStatement(sql.toString());
+            
+            rs = ps.executeQuery();
+            
+            boolean existemOutrosUsuariosAtivos = false;
+            
+            while (rs.next()) {
+                existemOutrosUsuariosAtivos = rs.getLong(1) > 0;
+            }
+
+            this.manager.fechaTransacao();
+            this.manager.close(conn, ps, rs);
+
+            return existemOutrosUsuariosAtivos;
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close(conn, ps, rs);
+            System.out.println(ex.getMessage());
+            throw new Exception("Erro ao buscar");
+        }
+    }
+    
 }

@@ -97,4 +97,16 @@ public class UsuarioRepository {
         return usuarioDAO.filter(nome);
     }
     
+    public boolean existemOutrosAdministradoresAtivos(Long idUsuario) throws Exception {
+        return usuarioDAO.existemOutrosAdministradoresAtivos(idUsuario);
+    }
+    
+    public boolean existemOutrosUsuariosAtivos(Long idUsuario) throws Exception {
+        return usuarioDAO.existemOutrosUsuariosAtivos(idUsuario);
+    }
+    
+    public boolean existeAdministradorAtivo() throws Exception {
+        return usuarioDAO.existeAdministradorAtivo();
+    }
+    
 }
