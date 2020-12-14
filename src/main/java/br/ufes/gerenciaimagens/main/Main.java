@@ -18,7 +18,7 @@ public class Main {
         Properties prop = app.loadPropertiesFile("config.properties");
         System.setProperty("db.name", prop.getProperty("db.name"));
         
-        new PrincipalPresenter(new Usuario(1L, "romulo", "123", "Rômulo", TipoUsuario.NORMAL));
+        new PrincipalPresenter();
     }
     
     public Properties loadPropertiesFile(String filePath) {

@@ -3,7 +3,10 @@ package br.ufes.gerenciaimagens.presenter.principal;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 /**
  *
@@ -29,11 +32,11 @@ public class PrincipalView extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         desktop = new javax.swing.JDesktopPane();
-        labelUsuarioLogado = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelRodape = new javax.swing.JPanel();
         buttonNotificacoes = new javax.swing.JButton();
+        labelUsuarioLogado = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBarPrincipal = new javax.swing.JMenuBar();
         menuImagem = new javax.swing.JMenu();
         itemListarImagem = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenu();
@@ -43,46 +46,40 @@ public class PrincipalView extends javax.swing.JFrame {
         setTitle("Gerência de Imagens");
         setExtendedState(6);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonNotificacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(buttonNotificacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        jLabel1.setText("Usuário:");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+        );
+
+        jLabel1.setText("Usuário:");
+
+        javax.swing.GroupLayout panelRodapeLayout = new javax.swing.GroupLayout(panelRodape);
+        panelRodape.setLayout(panelRodapeLayout);
+        panelRodapeLayout.setHorizontalGroup(
+            panelRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRodapeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonNotificacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        panelRodapeLayout.setVerticalGroup(
+            panelRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRodapeLayout.createSequentialGroup()
+                .addGroup(panelRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonNotificacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuImagem.setText("Imagem");
@@ -90,28 +87,30 @@ public class PrincipalView extends javax.swing.JFrame {
         itemListarImagem.setText("Listar Imagens");
         menuImagem.add(itemListarImagem);
 
-        jMenuBar1.add(menuImagem);
+        menuBarPrincipal.add(menuImagem);
 
         menuUsuario.setText("Usuário");
 
         itemManterUsuarios.setText("Listar usuários");
         menuUsuario.add(itemManterUsuarios);
 
-        jMenuBar1.add(menuUsuario);
+        menuBarPrincipal.add(menuUsuario);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelRodape, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -125,7 +124,7 @@ public class PrincipalView extends javax.swing.JFrame {
         return itemListarImagem;
     }
 
-    public JMenuItem getItemManterUsuarios() {
+    public JMenuItem getItemListarUsuarios() {
         return itemManterUsuarios;
     }
 
@@ -136,6 +135,22 @@ public class PrincipalView extends javax.swing.JFrame {
     public JDesktopPane getDesktop() {
         return desktop;
     }
+
+    public JPanel getPanelRodape() {
+        return panelRodape;
+    }
+
+    public JMenuBar getMenuBarPrincipal() {
+        return menuBarPrincipal;
+    }
+
+    public JMenu getMenuImagem() {
+        return menuImagem;
+    }
+
+    public JMenu getMenuUsuario() {
+        return menuUsuario;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonNotificacoes;
@@ -143,11 +158,11 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemListarImagem;
     private javax.swing.JMenuItem itemManterUsuarios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelUsuarioLogado;
+    private javax.swing.JMenuBar menuBarPrincipal;
     private javax.swing.JMenu menuImagem;
     private javax.swing.JMenu menuUsuario;
+    private javax.swing.JPanel panelRodape;
     // End of variables declaration//GEN-END:variables
 }

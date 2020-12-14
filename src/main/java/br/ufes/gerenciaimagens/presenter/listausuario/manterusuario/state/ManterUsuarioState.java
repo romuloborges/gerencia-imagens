@@ -6,8 +6,6 @@ import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.criptografas
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.ManterUsuarioPresenter;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.ManterUsuarioView;
 import br.ufes.gerenciaimagens.service.UsuarioService;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
