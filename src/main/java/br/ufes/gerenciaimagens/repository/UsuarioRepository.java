@@ -1,6 +1,8 @@
 package br.ufes.gerenciaimagens.repository;
 
+import br.ufes.gerenciaimagens.dao.collection.PermissaoDAOCollection;
 import br.ufes.gerenciaimagens.dao.collection.UsuarioDAOCollection;
+import br.ufes.gerenciaimagens.dao.interfaces.IPermissaoDAO;
 import br.ufes.gerenciaimagens.dao.interfaces.IUsuarioDAO;
 import br.ufes.gerenciaimagens.model.Usuario;
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.List;
 public class UsuarioRepository {
     
     private IUsuarioDAO usuarioDAO;
+    private IPermissaoDAO permissaoDAO;
     
     public UsuarioRepository() {
         usuarioDAO = UsuarioDAOCollection.getInstancia().cria(System.getProperty("db.name"));
+        permissaoDAO = PermissaoDAOCollection.getInstancia().cria(System.getProperty("db.name"));
     }
     
     public void insert(Usuario usuario) throws Exception {

@@ -1,5 +1,6 @@
 package br.ufes.gerenciaimagens.service;
 
+import br.ufes.gerenciaimagens.model.TipoPermissao;
 import br.ufes.gerenciaimagens.repository.PermissaoRepository;
 
 /**
@@ -24,6 +25,10 @@ public class PermissaoService {
     
     public boolean possuiPermissaoDeCompartilhar(Long idUsuario, Long idImagem) throws Exception {
         return permissaoRepository.possuiPermissaoDeCompartilhar(idUsuario, idImagem);
+    }
+    
+    public void concederPermissaoAoUsuario(TipoPermissao permissao, Long idUsuario, Long idImagem) throws Exception {
+        permissaoRepository.concederPermissaoAoUsuario(permissao, idUsuario, idImagem);
     }
     
 }
