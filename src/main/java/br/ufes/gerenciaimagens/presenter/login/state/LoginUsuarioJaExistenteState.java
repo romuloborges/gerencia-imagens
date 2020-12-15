@@ -2,7 +2,7 @@ package br.ufes.gerenciaimagens.presenter.login.state;
 
 import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import br.ufes.gerenciaimagens.model.Usuario;
-import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.criptografasenhautil.CriptografaSenhaUtil;
+import br.ufes.gerenciaimagens.presenter.usuario.manterusuario.criptografasenhautil.CriptografaSenhaUtil;
 import br.ufes.gerenciaimagens.presenter.login.LoginPresenter;
 import br.ufes.gerenciaimagens.presenter.login.LoginView;
 import br.ufes.gerenciaimagens.presenter.principal.PrincipalPresenter;

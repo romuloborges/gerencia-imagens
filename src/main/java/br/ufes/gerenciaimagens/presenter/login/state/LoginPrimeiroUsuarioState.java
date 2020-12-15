@@ -1,6 +1,6 @@
 package br.ufes.gerenciaimagens.presenter.login.state;
 
-import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.ManterUsuarioPresenter;
+import br.ufes.gerenciaimagens.presenter.usuario.manterusuario.ManterUsuarioPresenter;
 import br.ufes.gerenciaimagens.presenter.login.LoginPresenter;
 import br.ufes.gerenciaimagens.presenter.login.LoginView;
 

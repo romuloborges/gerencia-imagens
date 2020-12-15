@@ -23,14 +23,18 @@ public class ImagemSqliteDAO implements IImagemDAO {
 
     @Override
     public List<Imagem> obterTodasNaoExcluidas() throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
         try {
-            String SQL = "SELECT id, caminho FROM Imagem WHERE excluida = 0;";
+            String sql = "SELECT id, caminho FROM Imagem WHERE excluida = 0;";
 
-            Connection conn = this.manager.conectar();
+            conn = this.manager.conectar();
             this.manager.abreTransacao();
 
-            PreparedStatement ps = conn.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
             
             List<Imagem> imagens = new ArrayList<>();
             
@@ -50,7 +54,31 @@ public class ImagemSqliteDAO implements IImagemDAO {
             return imagens;
         } catch (Exception ex) {
             this.manager.desfazTransacao();
-            this.manager.close();
+            this.manager.close(conn, ps, rs);
+            throw new Exception("Erro ao inserir");
+        }
+    }
+
+    @Override
+    public void excluir(Long id) throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        
+        try {
+            String sql = "UPDATE Imagem SET excluida = 1 WHERE id = ?;";
+
+            conn = this.manager.conectar();
+            this.manager.abreTransacao();
+
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, id);
+            ps.executeUpdate();
+
+            this.manager.fechaTransacao();
+            this.manager.close(conn, ps);
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close(conn, ps);
             System.out.println(ex.getMessage());
             throw new Exception("Erro ao inserir");
         }

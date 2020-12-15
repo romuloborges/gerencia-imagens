@@ -1,10 +1,12 @@
 package br.ufes.gerenciaimagens.presenter.principal.state;
 
 import br.ufes.gerenciaimagens.model.Usuario;
-import br.ufes.gerenciaimagens.presenter.listaimagem.ListaImagemPresenter;
+import br.ufes.gerenciaimagens.presenter.imagem.ListaImagemPresenter;
+import br.ufes.gerenciaimagens.presenter.notificacao.NotificacaoPresenter;
 import br.ufes.gerenciaimagens.presenter.principal.PrincipalPresenter;
 import br.ufes.gerenciaimagens.presenter.principal.PrincipalView;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -33,15 +35,26 @@ public class TelaPrincipalUsuarioNormalState extends TelaPrincipalState {
         view.getItemListarImagem().addActionListener((ae) -> {
             new ListaImagemPresenter(view.getDesktop(), usuarioLogado.getId());
         });
+        
+        view.getButtonNotificacoes().addActionListener((ae) -> {
+            new NotificacaoPresenter(view.getDesktop(), usuarioLogado.getId());
+        });
     }
     
     private void removeListeners() {
         PrincipalView view = principalPresenter.getView();
         
         removeActionListeners(view.getItemListarImagem());
+        removeActionListeners(view.getButtonNotificacoes());
     }
     
     private void removeActionListeners(JMenuItem menuItem) {
+        for(ActionListener ae : menuItem.getActionListeners()) {
+            menuItem.removeActionListener(ae);
+        }
+    }
+    
+    private void removeActionListeners(JButton menuItem) {
         for(ActionListener ae : menuItem.getActionListeners()) {
             menuItem.removeActionListener(ae);
         }

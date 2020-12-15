@@ -13,5 +13,7 @@ public interface INotificacaoDAO {
     public List<Notificacao> obterTodasNotificacoes(Long idUsuarioDestinatario) throws Exception;
     public Long contaNotificacoesNaoLidas(Long idUsuarioDestinatario) throws Exception;
     public void enviarNotificacaoParaAdministradores(String mensagem, Long idUsuarioRemetente, Long idImagem, TipoNotificacao tipoNotificacao) throws Exception;
+    public void enviarNotificacao(String mensagem, Long idUsuarioRemetente, Long idUsuarioDestinatario, Long idImagem, TipoNotificacao tipoNotificacao) throws Exception;
+    public void marcarNotificacoesComoLidas(Long idUsuarioDestinatario) throws Exception;
     
 }

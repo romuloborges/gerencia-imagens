@@ -21,4 +21,12 @@ public class ImagemRepository {
         return imagemDAO.obterTodasNaoExcluidas();
     }
     
+    public void excluir(Long id) throws Exception {
+        if (id == null) {
+            throw new Exception("ID da imagem não foi fornecido");
+        }
+        
+        imagemDAO.excluir(id);
+    }
+    
 }

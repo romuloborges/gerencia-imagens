@@ -83,7 +83,7 @@ public class UsuarioSqliteDAO implements IUsuarioDAO {
         ResultSet rs = null;
         
         try {
-            String SQL = "SELECT u.id, u.login, u.excluido";
+            String SQL = "SELECT id, login, nome FROM Usuario WHERE id = ?;";
 
             conn = this.manager.conectar();
             this.manager.abreTransacao();
@@ -97,7 +97,7 @@ public class UsuarioSqliteDAO implements IUsuarioDAO {
             while (rs.next()) {
                 usuario.setId(rs.getLong(1));
                 usuario.setLogin(rs.getString(2));
-                usuario.setExcluido(rs.getLong(3) == 1L);
+                usuario.setNome(rs.getString(3));
             }
 
             this.manager.fechaTransacao();

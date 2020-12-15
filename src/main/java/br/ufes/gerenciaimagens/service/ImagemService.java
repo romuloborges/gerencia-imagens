@@ -21,4 +21,8 @@ public class ImagemService {
         return imagemRepository.obterTodasNaoExcluidas();
     }
     
+    public void excluir(Long id) throws Exception {
+        imagemRepository.excluir(id);
+    }
+    
 }

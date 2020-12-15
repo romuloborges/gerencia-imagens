@@ -10,5 +10,6 @@ import java.util.List;
 public interface IImagemDAO {
     
     public List<Imagem> obterTodasNaoExcluidas() throws Exception;
+    public void excluir(Long id) throws Exception;
     
 }
