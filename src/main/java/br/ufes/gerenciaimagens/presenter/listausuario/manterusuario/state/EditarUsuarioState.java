@@ -26,6 +26,7 @@ public class EditarUsuarioState extends ManterUsuarioState {
         enableCampos();
         
         view.getTextLogin().setEditable(false);
+        view.getComboTipoUsuario().setEnabled(false);
     }
     
     private void initBotoes() {
@@ -56,6 +57,7 @@ public class EditarUsuarioState extends ManterUsuarioState {
                 usuarioService.update(usuario);
                 JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso", "", JOptionPane.DEFAULT_OPTION);
                 fechar();
+                presenter.notifyObservers();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
             }

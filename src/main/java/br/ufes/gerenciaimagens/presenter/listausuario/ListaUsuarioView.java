@@ -33,7 +33,6 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsuarios = new javax.swing.JTable();
-        buttonExcluir = new javax.swing.JButton();
         buttonNovo = new javax.swing.JButton();
         buttonDefinirPermissoes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -59,8 +58,6 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tableUsuarios);
 
-        buttonExcluir.setText("Excluir");
-
         buttonNovo.setText("Novo");
 
         buttonDefinirPermissoes.setText("Definir permissões");
@@ -80,8 +77,7 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(buttonDefinirPermissoes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonVisualizar)
@@ -106,10 +102,9 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
                     .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonExcluir)
                     .addComponent(buttonNovo)
                     .addComponent(buttonVisualizar)
                     .addComponent(buttonDefinirPermissoes))
@@ -135,10 +130,6 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
         return buttonVisualizar;
     }
 
-    public JButton getButtonExcluir() {
-        return buttonExcluir;
-    }
-
     public JButton getButtonNovo() {
         return buttonNovo;
     }
@@ -150,7 +141,6 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBuscar;
     private javax.swing.JButton buttonDefinirPermissoes;
-    private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonNovo;
     private javax.swing.JButton buttonVisualizar;
     private javax.swing.JLabel jLabel1;

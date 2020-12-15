@@ -30,8 +30,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" pref="551" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="buttonExcluir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="buttonDefinirPermissoes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonVisualizar" min="-2" max="-2" attributes="0"/>
@@ -63,10 +62,9 @@
                   <Component id="buttonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="223" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="226" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="buttonExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonVisualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonDefinirPermissoes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -99,11 +97,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="buttonExcluir">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Excluir"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="buttonNovo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo"/>

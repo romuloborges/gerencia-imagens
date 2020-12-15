@@ -56,7 +56,7 @@ public class UsuarioSqliteDAO implements IUsuarioDAO {
         PreparedStatement ps = null;
         
         try {
-            String SQL = "UPDATE Usuario SET nome = ?, senha = ?, tipo = ? WHERE id = ?;";
+            String SQL = "UPDATE Usuario SET nome = ?, senha = ? WHERE id = ?;";
 
             conn = this.manager.conectar();
             this.manager.abreTransacao();
@@ -64,8 +64,7 @@ public class UsuarioSqliteDAO implements IUsuarioDAO {
             ps = conn.prepareStatement(SQL);
             ps.setString(1, usuario.getNome());
             ps.setString(2, usuario.getSenha());
-            ps.setString(3, usuario.getTipo().name());
-            ps.setLong(4, usuario.getId());
+            ps.setLong(3, usuario.getId());
             ps.executeUpdate();
 
             this.manager.fechaTransacao();

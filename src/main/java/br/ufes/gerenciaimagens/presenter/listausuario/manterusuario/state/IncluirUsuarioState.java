@@ -48,6 +48,7 @@ public class IncluirUsuarioState extends ManterUsuarioState {
                 usuarioService.insert(usuario);
                 JOptionPane.showMessageDialog(null, "Usuário incluído com sucesso", "", JOptionPane.DEFAULT_OPTION);
                 fechar();
+                presenter.notifyObservers();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
             }

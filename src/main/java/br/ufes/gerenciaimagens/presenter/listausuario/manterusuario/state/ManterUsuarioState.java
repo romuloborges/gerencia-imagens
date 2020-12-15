@@ -48,6 +48,8 @@ public abstract class ManterUsuarioState {
                 Usuario usuario = presenter.getUsuarioManter();
                 usuarioService.delete(usuario.getId());
                 JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso");
+                fechar();
+                presenter.notifyObservers();
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao excluir", JOptionPane.ERROR_MESSAGE);

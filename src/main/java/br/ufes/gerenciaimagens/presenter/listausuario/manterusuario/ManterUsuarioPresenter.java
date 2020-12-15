@@ -6,18 +6,23 @@ import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.Inclui
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.IncluirUsuarioState;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.ManterUsuarioState;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state.VisualizarUsuarioState;
+import br.ufes.gerenciaimagens.presenter.listausuario.observer.IManterUsuarioObservado;
+import br.ufes.gerenciaimagens.presenter.listausuario.observer.IManterUsuarioObservador;
 import br.ufes.gerenciaimagens.presenter.principal.PrincipalPresenter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDesktopPane;
 
 /**
  *
  * @author rborges
  */
-public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsuarioView> {
+public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsuarioView> implements IManterUsuarioObservado {
     
     private Usuario usuarioManter;
     private ManterUsuarioState state;
     private PrincipalPresenter principalPresenter;
+    private List<IManterUsuarioObservador> observadores;
     
     public ManterUsuarioPresenter(JDesktopPane desktop, PrincipalPresenter principalPresenter) {
         super(desktop, new ManterUsuarioView());
@@ -26,6 +31,7 @@ public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsu
             throw new RuntimeException("Principal presenter informada é inválida");
         }
         
+        this.observadores = new ArrayList<>();
         this.principalPresenter = principalPresenter;
         
         this.usuarioManter = new Usuario();
@@ -36,6 +42,8 @@ public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsu
     
     public ManterUsuarioPresenter(JDesktopPane desktop, Long idUsuarioLogado) {
         super(desktop, new ManterUsuarioView(), idUsuarioLogado);
+        
+        this.observadores = new ArrayList<>();
         
         this.usuarioManter = new Usuario();
         this.state = new IncluirUsuarioState(this);
@@ -48,6 +56,8 @@ public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsu
         if (usuario == null) {
             throw new RuntimeException("Usuário fornecido é inválido");
         }
+        
+        this.observadores = new ArrayList<>();
         
         this.usuarioManter = usuario;
         this.state = new VisualizarUsuarioState(this);
@@ -69,6 +79,23 @@ public class ManterUsuarioPresenter extends BaseInternalFramePresenter<ManterUsu
 
     public PrincipalPresenter getPrincipalPresenter() {
         return principalPresenter;
+    }
+
+    @Override
+    public void attachObserver(IManterUsuarioObservador observador) {
+        observadores.add(observador);
+    }
+
+    @Override
+    public void detachObserver(IManterUsuarioObservador observador) {
+        observadores.remove(observador);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(IManterUsuarioObservador observador : observadores) {
+            observador.update();
+        }
     }
     
 }
