@@ -5,6 +5,10 @@
  */
 package br.ufes.gerenciaimagens.presenter.listaimagem.visualiza;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+
 /**
  *
  * @author rborges
@@ -27,17 +31,26 @@ public class VisualizaImagemView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonCompartilhar = new javax.swing.JButton();
         buttonSolicitarAcesso = new javax.swing.JButton();
         labelMensagemNaoPossuiAcesso = new javax.swing.JLabel();
+        labelImagem = new javax.swing.JLabel();
+        checkboxTodasImagens = new javax.swing.JCheckBox();
+        checkboxSomenteNesta = new javax.swing.JCheckBox();
 
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Visualizar Imagem");
-
-        buttonCompartilhar.setText("Compartilhar");
 
         buttonSolicitarAcesso.setText("Solicitar acesso de visualização");
 
-        labelMensagemNaoPossuiAcesso.setText("Você não possui acesso de visualização nesta imagem");
+        labelMensagemNaoPossuiAcesso.setText("Você não possui acesso de visualização nesta imagem. Solicite acesso a essa ou todas imagens");
+
+        labelImagem.setText("Imagem");
+
+        checkboxTodasImagens.setText("Todas imagens");
+
+        checkboxSomenteNesta.setText("Somente nesta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,23 +59,31 @@ public class VisualizaImagemView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelMensagemNaoPossuiAcesso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelImagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonSolicitarAcesso)
-                        .addGap(44, 44, 44)
-                        .addComponent(buttonCompartilhar))
-                    .addComponent(labelMensagemNaoPossuiAcesso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonSolicitarAcesso))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkboxSomenteNesta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkboxTodasImagens)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelMensagemNaoPossuiAcesso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addComponent(labelMensagemNaoPossuiAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCompartilhar)
-                    .addComponent(buttonSolicitarAcesso))
+                    .addComponent(checkboxTodasImagens)
+                    .addComponent(checkboxSomenteNesta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelImagem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(buttonSolicitarAcesso)
                 .addContainerGap())
         );
 
@@ -70,9 +91,31 @@ public class VisualizaImagemView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
+    public JButton getButtonSolicitarAcesso() {
+        return buttonSolicitarAcesso;
+    }
+
+    public JLabel getLabelImagem() {
+        return labelImagem;
+    }
+
+    public JLabel getLabelMensagemNaoPossuiAcesso() {
+        return labelMensagemNaoPossuiAcesso;
+    }
+
+    public JCheckBox getCheckboxSomenteNesta() {
+        return checkboxSomenteNesta;
+    }
+
+    public JCheckBox getCheckboxTodasImagens() {
+        return checkboxTodasImagens;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCompartilhar;
     private javax.swing.JButton buttonSolicitarAcesso;
+    private javax.swing.JCheckBox checkboxSomenteNesta;
+    private javax.swing.JCheckBox checkboxTodasImagens;
+    private javax.swing.JLabel labelImagem;
     private javax.swing.JLabel labelMensagemNaoPossuiAcesso;
     // End of variables declaration//GEN-END:variables
 }

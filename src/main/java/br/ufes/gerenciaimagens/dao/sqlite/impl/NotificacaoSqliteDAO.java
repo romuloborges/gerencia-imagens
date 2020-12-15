@@ -5,10 +5,13 @@ import br.ufes.gerenciaimagens.dao.manager.SqliteManager;
 import br.ufes.gerenciaimagens.model.Imagem;
 import br.ufes.gerenciaimagens.model.Notificacao;
 import br.ufes.gerenciaimagens.model.Usuario;
+import br.ufes.gerenciaimagens.model.enums.TipoNotificacao;
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,6 +123,62 @@ public class NotificacaoSqliteDAO implements INotificacaoDAO {
             this.manager.close(conn, ps, rs);
             
             return quantidadeNotificacoesNaoLidas;
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close(conn, ps);
+            System.out.println(ex.getMessage());
+            throw new Exception("Erro ao inserir");
+        }
+    }
+    
+    @Override
+    public void enviarNotificacaoParaAdministradores(String mensagem, Long idUsuarioRemetente, Long idImagem, TipoNotificacao tipoNotificacao) throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        
+        try {
+            StringBuilder sql = new StringBuilder();
+            
+            sql.append( " INSERT " );
+            sql.append( " 	INTO " );
+            sql.append( " 	Notificacao(mensagem, enviada_por, enviada_para, tipo, data_enviada, id_imagem) " );
+            sql.append( " SELECT " );
+            sql.append( " 	?, " );
+            sql.append( " 	?, " );
+            sql.append( " 	id, " );
+            sql.append( " 	?, " );
+            sql.append( " 	?, " );
+            if (idImagem == null) {
+                sql.append( " 	NULL " );
+            } else {
+                sql.append( " 	? " );
+            }
+            sql.append( " FROM " );
+            sql.append( " 	Usuario " );
+            sql.append( " WHERE " );
+            sql.append( " 	excluido = 0 " );
+            sql.append( " 	AND tipo = 'ADMINISTRADOR'; " );
+
+            conn = this.manager.conectar();
+            this.manager.abreTransacao();
+
+            ps = conn.prepareStatement(sql.toString());
+            
+            int parametroAtual = 1;
+            
+            ps.setString(1, mensagem);
+            ps.setLong(2, idUsuarioRemetente);
+            ps.setString(3, tipoNotificacao.name());
+            ps.setString(4, LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
+            
+            if (idImagem != null) {
+                ps.setLong(5, idImagem);
+            }
+            
+            ps.executeUpdate();
+
+            this.manager.fechaTransacao();
+            this.manager.close(conn, ps);
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close(conn, ps);

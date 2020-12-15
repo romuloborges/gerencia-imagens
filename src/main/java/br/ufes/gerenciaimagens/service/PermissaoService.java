@@ -1,6 +1,6 @@
 package br.ufes.gerenciaimagens.service;
 
-import br.ufes.gerenciaimagens.model.TipoPermissao;
+import br.ufes.gerenciaimagens.model.enums.TipoPermissao;
 import br.ufes.gerenciaimagens.repository.PermissaoRepository;
 import java.util.List;
 

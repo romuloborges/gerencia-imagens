@@ -1,6 +1,6 @@
 package br.ufes.gerenciaimagens.main;
 
-import br.ufes.gerenciaimagens.model.TipoUsuario;
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.principal.PrincipalPresenter;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.state;
 
-import br.ufes.gerenciaimagens.model.TipoUsuario;
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.criptografasenhautil.CriptografaSenhaUtil;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.ManterUsuarioPresenter;

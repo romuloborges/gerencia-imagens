@@ -2,7 +2,7 @@ package br.ufes.gerenciaimagens.dao.sqlite.impl;
 
 import br.ufes.gerenciaimagens.dao.interfaces.IUsuarioDAO;
 import br.ufes.gerenciaimagens.dao.manager.SqliteManager;
-import br.ufes.gerenciaimagens.model.TipoUsuario;
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import br.ufes.gerenciaimagens.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

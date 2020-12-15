@@ -1,7 +1,10 @@
 package br.ufes.gerenciaimagens.presenter.listaimagem.state;
 
+import br.ufes.gerenciaimagens.model.Imagem;
 import br.ufes.gerenciaimagens.presenter.listaimagem.ListaImagemPresenter;
 import br.ufes.gerenciaimagens.presenter.listaimagem.ListaImagemView;
+import br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.VisualizaImagemPresenter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,8 +40,28 @@ public class ListagemImagensState extends ListaImagemState {
         });
         
         view.getButtonVisualizar().addActionListener((ae) -> {
-            
+            visualizar();
         });
+    }
+
+    @Override
+    public void visualizar() {
+        Long idImagemSelecionada = presenter.getIdImagemSelecionada();
+        
+        if (idImagemSelecionada != null) {
+            Imagem imagem = null;
+            for(Imagem i : presenter.getImagens()) {
+                if (i.getId().equals(idImagemSelecionada)) {
+                    imagem = i;
+                    break;
+                }
+            }
+            if (imagem != null) {
+                new VisualizaImagemPresenter(presenter.getContainer(), presenter.getIdUsuarioLogado(), imagem);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma imagem", "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

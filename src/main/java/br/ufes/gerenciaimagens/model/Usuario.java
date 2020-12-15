@@ -1,5 +1,7 @@
 package br.ufes.gerenciaimagens.model;
 
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
+
 /**
  *
  * @author rborges

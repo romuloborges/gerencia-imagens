@@ -1,7 +1,9 @@
 package br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.state;
 
 import br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.VisualizaImagemPresenter;
+import br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.VisualizaImagemView;
 import br.ufes.gerenciaimagens.service.PermissaoService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,17 +23,23 @@ public class VisualizaImagemComPermissaoState extends VisualizaImagemPresenterSt
     
     @Override
     protected void initComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void compartilhar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        VisualizaImagemView view = presenter.getView();
+        
+        view.getLabelMensagemNaoPossuiAcesso().setVisible(false);
+        view.getButtonSolicitarAcesso().setVisible(false);
+        view.getCheckboxSomenteNesta().setVisible(false);
+        view.getCheckboxTodasImagens().setVisible(false);
+        
+        try {
+            view.getLabelImagem().setIcon(presenter.getImagem().getImageIcon());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir imagem", "", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @Override
     public void solicitarAcesso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

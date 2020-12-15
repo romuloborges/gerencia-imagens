@@ -2,7 +2,7 @@ package br.ufes.gerenciaimagens.dao.sqlite.impl;
 
 import br.ufes.gerenciaimagens.dao.interfaces.IPermissaoDAO;
 import br.ufes.gerenciaimagens.dao.manager.SqliteManager;
-import br.ufes.gerenciaimagens.model.TipoPermissao;
+import br.ufes.gerenciaimagens.model.enums.TipoPermissao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

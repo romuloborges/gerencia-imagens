@@ -1,6 +1,6 @@
 package br.ufes.gerenciaimagens.dao.interfaces;
 
-import br.ufes.gerenciaimagens.model.TipoPermissao;
+import br.ufes.gerenciaimagens.model.enums.TipoPermissao;
 import java.util.List;
 
 /**

@@ -2,7 +2,7 @@ package br.ufes.gerenciaimagens.repository;
 
 import br.ufes.gerenciaimagens.dao.collection.PermissaoDAOCollection;
 import br.ufes.gerenciaimagens.dao.interfaces.IPermissaoDAO;
-import br.ufes.gerenciaimagens.model.TipoPermissao;
+import br.ufes.gerenciaimagens.model.enums.TipoPermissao;
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 package br.ufes.gerenciaimagens.presenter.listausuario;
 
-import br.ufes.gerenciaimagens.model.TipoUsuario;
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
 import br.ufes.gerenciaimagens.presenter.listaimagem.ListaImagemPresenter;

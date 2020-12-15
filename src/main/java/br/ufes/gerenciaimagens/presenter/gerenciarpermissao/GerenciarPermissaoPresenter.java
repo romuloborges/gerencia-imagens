@@ -1,6 +1,6 @@
 package br.ufes.gerenciaimagens.presenter.gerenciarpermissao;
 
-import br.ufes.gerenciaimagens.model.TipoPermissao;
+import br.ufes.gerenciaimagens.model.enums.TipoPermissao;
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
 import br.ufes.gerenciaimagens.service.PermissaoService;

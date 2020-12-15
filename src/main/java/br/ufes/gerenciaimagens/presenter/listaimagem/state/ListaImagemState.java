@@ -26,6 +26,22 @@ public abstract class ListaImagemState {
         this.imagemService = new ImagemService();
     }
     
+    public void compartilhar() {
+        
+    }
+    
+    public void excluir() {
+        
+    }
+    
+    public void visualizar() {
+        
+    }
+    
+    public void concederPermissao() {
+        
+    }
+    
     public void fechar() {
         presenter.getView().setVisible(false);
         presenter.getView().dispose();

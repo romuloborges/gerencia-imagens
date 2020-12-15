@@ -35,7 +35,8 @@ public class ConcederPermissaoState extends ListaImagemState {
         });
     }
     
-    private void concederPermissao() {
+    @Override
+    public void concederPermissao() {
         Long idImagemSelecionada = presenter.getIdImagemSelecionada();
         
         int opcao = -1;

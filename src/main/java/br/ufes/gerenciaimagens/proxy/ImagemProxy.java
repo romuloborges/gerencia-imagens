@@ -1,4 +1,4 @@
-package br.ufes.gerenciaimagens.model.proxy;
+package br.ufes.gerenciaimagens.proxy;
 
 import br.ufes.gerenciaimagens.model.Imagem;
 import br.ufes.gerenciaimagens.model.interfaces.IImagem;

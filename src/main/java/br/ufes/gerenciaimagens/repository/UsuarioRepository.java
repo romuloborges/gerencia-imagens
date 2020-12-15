@@ -4,7 +4,8 @@ import br.ufes.gerenciaimagens.dao.collection.PermissaoDAOCollection;
 import br.ufes.gerenciaimagens.dao.collection.UsuarioDAOCollection;
 import br.ufes.gerenciaimagens.dao.interfaces.IPermissaoDAO;
 import br.ufes.gerenciaimagens.dao.interfaces.IUsuarioDAO;
-import br.ufes.gerenciaimagens.model.TipoPermissao;
+import br.ufes.gerenciaimagens.model.enums.TipoPermissao;
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import br.ufes.gerenciaimagens.model.Usuario;
 import java.util.Arrays;
 import java.util.List;
@@ -44,9 +45,11 @@ public class UsuarioRepository {
         
         usuarioDAO.insert(usuario);
         
-        Usuario ultimoUsuarioInserido = usuarioDAO.getUltimoInserido();
+        if (TipoUsuario.ADMINISTRADOR.equals(usuario.getTipo())) {
+            Usuario ultimoUsuarioInserido = usuarioDAO.getUltimoInserido();
         
-        permissaoDAO.concederPermissaoAoUsuario(Arrays.asList(TipoPermissao.values()), ultimoUsuarioInserido.getId(), null);
+            permissaoDAO.concederPermissaoAoUsuario(Arrays.asList(TipoPermissao.values()), ultimoUsuarioInserido.getId(), null);
+        }
     }
     
     public void update(Usuario usuario) throws Exception {

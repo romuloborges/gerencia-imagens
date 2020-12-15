@@ -5,7 +5,7 @@
  */
 package br.ufes.gerenciaimagens.presenter.listausuario.manterusuario;
 
-import br.ufes.gerenciaimagens.model.TipoUsuario;
+import br.ufes.gerenciaimagens.model.enums.TipoUsuario;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;

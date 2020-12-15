@@ -1,4 +1,4 @@
-package br.ufes.gerenciaimagens.model;
+package br.ufes.gerenciaimagens.model.enums;
 
 /**
  *

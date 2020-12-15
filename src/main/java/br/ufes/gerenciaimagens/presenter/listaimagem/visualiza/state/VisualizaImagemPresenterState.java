@@ -1,6 +1,7 @@
 package br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.state;
 
 import br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.VisualizaImagemPresenter;
+import br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.VisualizaImagemView;
 
 /**
  *
@@ -21,8 +22,11 @@ public abstract class VisualizaImagemPresenterState {
     
     protected abstract void initComponents();
     
-    public abstract void compartilhar();
-    
     public abstract void solicitarAcesso();
+    
+    protected void fechar() {
+        VisualizaImagemView view = presenter.getView();
+        view.dispose();
+    }
     
 }

@@ -3,7 +3,7 @@ package br.ufes.gerenciaimagens.presenter.listaimagem;
 import br.ufes.gerenciaimagens.model.Imagem;
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.model.interfaces.IImagem;
-import br.ufes.gerenciaimagens.model.proxy.ImagemProxy;
+import br.ufes.gerenciaimagens.proxy.ImagemProxy;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
 import br.ufes.gerenciaimagens.presenter.listaimagem.renderer.RendererListaImagem;
 import br.ufes.gerenciaimagens.presenter.listaimagem.state.ConcederPermissaoState;

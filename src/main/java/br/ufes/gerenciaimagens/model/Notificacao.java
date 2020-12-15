@@ -1,5 +1,6 @@
 package br.ufes.gerenciaimagens.model;
 
+import br.ufes.gerenciaimagens.model.enums.TipoNotificacao;
 import java.time.LocalDateTime;
 
 /**
@@ -14,6 +15,7 @@ public class Notificacao {
     private Usuario destinatario;
     private boolean visualizada;
     private Imagem imagem;
+    private TipoNotificacao tipoNoficicacao;
     private LocalDateTime dataEnviada;
 
     public Long getId() {
