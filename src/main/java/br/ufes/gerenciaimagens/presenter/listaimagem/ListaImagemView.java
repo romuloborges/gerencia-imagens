@@ -5,6 +5,7 @@
  */
 package br.ufes.gerenciaimagens.presenter.listaimagem;
 
+import javax.swing.JButton;
 import javax.swing.JList;
 
 /**
@@ -34,6 +35,7 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
         buttonVisualizar = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
         buttonCompartilhar = new javax.swing.JButton();
+        buttonGerenciarPermissoes = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -47,6 +49,8 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
 
         buttonCompartilhar.setText("Compartilhar");
 
+        buttonGerenciarPermissoes.setText("Gerenciar Permissões");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,7 +61,9 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonGerenciarPermissoes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCompartilhar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonVisualizar)))
@@ -72,7 +78,8 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonVisualizar)
                     .addComponent(buttonExcluir)
-                    .addComponent(buttonCompartilhar))
+                    .addComponent(buttonCompartilhar)
+                    .addComponent(buttonGerenciarPermissoes))
                 .addContainerGap())
         );
 
@@ -83,9 +90,26 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
         return listImagem;
     }
 
+    public JButton getButtonCompartilhar() {
+        return buttonCompartilhar;
+    }
+
+    public JButton getButtonExcluir() {
+        return buttonExcluir;
+    }
+
+    public JButton getButtonGerenciarPermissoes() {
+        return buttonGerenciarPermissoes;
+    }
+
+    public JButton getButtonVisualizar() {
+        return buttonVisualizar;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCompartilhar;
     private javax.swing.JButton buttonExcluir;
+    private javax.swing.JButton buttonGerenciarPermissoes;
     private javax.swing.JButton buttonVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listImagem;

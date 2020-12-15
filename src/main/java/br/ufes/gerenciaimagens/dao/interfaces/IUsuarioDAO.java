@@ -19,5 +19,6 @@ public interface IUsuarioDAO {
     public boolean existemOutrosAdministradoresAtivos(Long idUsuario) throws Exception;
     public boolean existemOutrosUsuariosAtivos(Long idUsuario) throws Exception;
     public boolean existeAdministradorAtivo() throws Exception;
+    public Usuario getUltimoInserido() throws Exception;
     
 }

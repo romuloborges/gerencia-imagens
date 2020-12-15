@@ -1,7 +1,9 @@
 package br.ufes.gerenciaimagens.presenter.listausuario;
 
+import br.ufes.gerenciaimagens.model.TipoUsuario;
 import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
+import br.ufes.gerenciaimagens.presenter.listaimagem.ListaImagemPresenter;
 import br.ufes.gerenciaimagens.presenter.listausuario.manterusuario.ManterUsuarioPresenter;
 import br.ufes.gerenciaimagens.presenter.listausuario.observer.IManterUsuarioObservador;
 import br.ufes.gerenciaimagens.service.UsuarioService;
@@ -79,7 +81,7 @@ public class ListaUsuarioPresenter extends BaseInternalFramePresenter<ListaUsuar
         });
         
         getView().getButtonDefinirPermissoes().addActionListener((ae) -> {
-            
+            concederPermissoes();
         });
     }
     
@@ -115,6 +117,20 @@ public class ListaUsuarioPresenter extends BaseInternalFramePresenter<ListaUsuar
     @Override
     public void update() {
         buscarUsuarios();
+    }
+    
+    private void concederPermissoes() {
+        int linhaSelecionada = getView().getTableUsuarios().getSelectedRow();
+        if (linhaSelecionada >= 0) {
+            Usuario usuario = usuarios.get(linhaSelecionada);
+            if (!TipoUsuario.ADMINISTRADOR.equals(usuario.getTipo())) {
+                new ListaImagemPresenter(getContainer(), getIdUsuarioLogado(), usuario);
+            } else {
+                JOptionPane.showMessageDialog(null, "Não é possível editar as permissões de um administrador", "", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um usuário para conceder permissão", "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

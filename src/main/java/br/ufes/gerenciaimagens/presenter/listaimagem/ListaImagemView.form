@@ -30,7 +30,9 @@
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="buttonExcluir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="166" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="buttonGerenciarPermissoes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonCompartilhar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonVisualizar" min="-2" max="-2" attributes="0"/>
@@ -50,6 +52,7 @@
                   <Component id="buttonVisualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonCompartilhar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonGerenciarPermissoes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -89,6 +92,11 @@
     <Component class="javax.swing.JButton" name="buttonCompartilhar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Compartilhar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonGerenciarPermissoes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gerenciar Permiss&#xf5;es"/>
       </Properties>
     </Component>
   </SubComponents>

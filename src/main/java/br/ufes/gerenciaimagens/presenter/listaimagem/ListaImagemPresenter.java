@@ -1,11 +1,16 @@
 package br.ufes.gerenciaimagens.presenter.listaimagem;
 
 import br.ufes.gerenciaimagens.model.Imagem;
+import br.ufes.gerenciaimagens.model.Usuario;
 import br.ufes.gerenciaimagens.model.interfaces.IImagem;
 import br.ufes.gerenciaimagens.model.proxy.ImagemProxy;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
 import br.ufes.gerenciaimagens.presenter.listaimagem.renderer.RendererListaImagem;
+import br.ufes.gerenciaimagens.presenter.listaimagem.state.ConcederPermissaoState;
+import br.ufes.gerenciaimagens.presenter.listaimagem.state.ListaImagemState;
+import br.ufes.gerenciaimagens.presenter.listaimagem.state.ListagemImagensState;
 import br.ufes.gerenciaimagens.service.ImagemService;
+import java.util.ArrayList;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +27,9 @@ public class ListaImagemPresenter extends BaseInternalFramePresenter<ListaImagem
 
     private ImagemService imagemService;
     private Map<String, IImagem> mapPathImagem;
+    private ListaImagemState state;
+    private Usuario usuarioParaConcederPermissao;
+    private List<Imagem> imagens;
 
     public ListaImagemPresenter(JDesktopPane desktop, Long idUsuarioLogado) {
         super(desktop, new ListaImagemView(), idUsuarioLogado);
@@ -29,13 +37,30 @@ public class ListaImagemPresenter extends BaseInternalFramePresenter<ListaImagem
         imagemService = new ImagemService();
 
         iniciarListaImagens();
+        
+        setState(new ListagemImagensState(this));
+
+        getView().setVisible(true);
+    }
+    
+    public ListaImagemPresenter(JDesktopPane desktop, Long idUsuarioLogado, Usuario usuarioParaConcederPermissao) {
+        super(desktop, new ListaImagemView(), idUsuarioLogado);
+
+        imagemService = new ImagemService();
+        this.usuarioParaConcederPermissao = usuarioParaConcederPermissao;
+
+        iniciarListaImagens();
+        
+        setState(new ConcederPermissaoState(this));
 
         getView().setVisible(true);
     }
 
     private void iniciarListaImagens() {
+        imagens = new ArrayList<>();
+        
         try {
-            List<Imagem> imagens = imagemService.obterTodasNaoExcluidas();
+            imagens = imagemService.obterTodasNaoExcluidas();
 
             if (imagens == null) {
                 throw new Exception("Erro ao carregar imagens");
@@ -68,6 +93,29 @@ public class ListaImagemPresenter extends BaseInternalFramePresenter<ListaImagem
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public Usuario getUsuarioParaConcederPermissao() {
+        return usuarioParaConcederPermissao;
+    }
+
+    public void setState(ListaImagemState state) {
+        this.state = state;
+    }
+
+    public List<Imagem> getImagens() {
+        return imagens;
+    }
+    
+    public Long getIdImagemSelecionada() {
+        int linhaSelecionada = getView().getListImagem().getSelectedIndex();
+        
+        if (linhaSelecionada >= 0) {
+            Imagem imagem = imagens.get(linhaSelecionada);
+            return imagem.getId();
+        }
+        
+        return null;
     }
 
 }

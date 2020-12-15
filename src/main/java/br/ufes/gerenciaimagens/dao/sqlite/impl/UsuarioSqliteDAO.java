@@ -183,7 +183,7 @@ public class UsuarioSqliteDAO implements IUsuarioDAO {
         ResultSet rs = null;
         
         try {
-            String SQL = "SELECT id FROM Usuario WHERE login = ?;";
+            String SQL = "SELECT id FROM Usuario WHERE login = ? AND excluido = 0;";
 
             conn = this.manager.conectar();
             this.manager.abreTransacao();
@@ -362,6 +362,44 @@ public class UsuarioSqliteDAO implements IUsuarioDAO {
             this.manager.close(conn, ps, rs);
 
             return existemOutrosUsuariosAtivos;
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close(conn, ps, rs);
+            System.out.println(ex.getMessage());
+            throw new Exception("Erro ao buscar");
+        }
+    }
+    
+    @Override
+    public Usuario getUltimoInserido() throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;    
+        
+        try {
+            String SQL = "SELECT id, login, senha, nome, tipo FROM Usuario WHERE excluido = 0 AND id = (SELECT MAX(id) FROM Usuario);";
+
+            conn = this.manager.conectar();
+            this.manager.abreTransacao();
+
+            ps = conn.prepareStatement(SQL);
+            rs = ps.executeQuery();
+
+            Usuario usuario = new Usuario();
+
+            while (rs.next()) {
+                usuario.setId(rs.getLong(1));
+                usuario.setLogin(rs.getString(2));
+                usuario.setSenha(rs.getString(3));
+                usuario.setNome(rs.getString(4));
+                usuario.setTipo(TipoUsuario.valueOf(rs.getString(5)));
+                usuario.setExcluido(false);
+            }
+
+            this.manager.fechaTransacao();
+            this.manager.close(conn, ps, rs);
+
+            return usuario;
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close(conn, ps, rs);

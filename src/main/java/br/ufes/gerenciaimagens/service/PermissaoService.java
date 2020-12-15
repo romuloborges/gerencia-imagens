@@ -2,6 +2,7 @@ package br.ufes.gerenciaimagens.service;
 
 import br.ufes.gerenciaimagens.model.TipoPermissao;
 import br.ufes.gerenciaimagens.repository.PermissaoRepository;
+import java.util.List;
 
 /**
  *
@@ -15,20 +16,24 @@ public class PermissaoService {
         this.permissaoRepository = new PermissaoRepository();
     }
     
-    public boolean possuiPermissaoDeVisualizar(Long idUsuario, Long idImagem) throws Exception {
-        return permissaoRepository.possuiPermissaoDeVisualizar(idUsuario, idImagem);
+    public boolean possuiPermissao(Long idUsuario, Long idImagem, TipoPermissao tipoPermissao) throws Exception {
+        return permissaoRepository.possuiPermissao(idUsuario, idImagem, tipoPermissao);
     }
     
-    public boolean possuiPermissaoDeExcluir(Long idUsuario, Long idImagem) throws Exception {
-        return permissaoRepository.possuiPermissaoDeExcluir(idUsuario, idImagem);
+    public void concederPermissaoAoUsuario(List<TipoPermissao> permissoes, Long idUsuario, Long idImagem) throws Exception {
+        permissaoRepository.concederPermissaoAoUsuario(permissoes, idUsuario, idImagem);
     }
     
-    public boolean possuiPermissaoDeCompartilhar(Long idUsuario, Long idImagem) throws Exception {
-        return permissaoRepository.possuiPermissaoDeCompartilhar(idUsuario, idImagem);
+    public void removerPermissoes(Long idUsuario, Long idImagem) throws Exception {
+        permissaoRepository.removerPermissoes(idUsuario, idImagem);
     }
     
-    public void concederPermissaoAoUsuario(TipoPermissao permissao, Long idUsuario, Long idImagem) throws Exception {
-        permissaoRepository.concederPermissaoAoUsuario(permissao, idUsuario, idImagem);
+    public void salvarPermissoes(List<TipoPermissao> permissoes, Long idUsuario, Long idImagem) throws Exception {
+        permissaoRepository.salvarPermissoes(permissoes, idUsuario, idImagem);
+    }
+    
+    public boolean possuiPermissaoEmTodasImagens(Long idUsuario, TipoPermissao tipoPermissao) throws Exception {
+        return permissaoRepository.possuiPermissaoEmTodasImagens(idUsuario, tipoPermissao);
     }
     
 }

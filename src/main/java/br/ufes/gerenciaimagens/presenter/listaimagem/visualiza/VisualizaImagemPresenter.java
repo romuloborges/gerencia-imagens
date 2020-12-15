@@ -1,6 +1,7 @@
 package br.ufes.gerenciaimagens.presenter.listaimagem.visualiza;
 
 import br.ufes.gerenciaimagens.model.Imagem;
+import br.ufes.gerenciaimagens.model.TipoPermissao;
 import br.ufes.gerenciaimagens.presenter.base.BaseInternalFramePresenter;
 import br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.state.SolicitaPermissaoVisualizarState;
 import br.ufes.gerenciaimagens.presenter.listaimagem.visualiza.state.VisualizaImagemComPermissaoState;
@@ -34,7 +35,7 @@ public class VisualizaImagemPresenter extends BaseInternalFramePresenter<Visuali
         permissaoService = new PermissaoService();
         
         try {
-            boolean possuiPermissao = permissaoService.possuiPermissaoDeVisualizar(idUsuarioLogado, imagem.getId());
+            boolean possuiPermissao = permissaoService.possuiPermissao(idUsuarioLogado, imagem.getId(), TipoPermissao.VISUALIZACAO);
             if (possuiPermissao) {
                 this.state = new VisualizaImagemComPermissaoState(this);
             } else {
