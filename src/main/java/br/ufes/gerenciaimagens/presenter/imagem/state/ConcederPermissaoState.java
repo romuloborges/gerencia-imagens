@@ -24,6 +24,7 @@ public class ConcederPermissaoState extends ListaImagemState {
         view.getButtonCompartilhar().setVisible(false);
         view.getButtonExcluir().setVisible(false);
         view.getButtonVisualizar().setVisible(false);
+        view.getButtonDesfazerExclusao().setVisible(false);
         view.getButtonGerenciarPermissoes().setVisible(true);
     }
     

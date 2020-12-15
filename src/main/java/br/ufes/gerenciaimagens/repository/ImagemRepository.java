@@ -29,4 +29,12 @@ public class ImagemRepository {
         imagemDAO.excluir(id);
     }
     
+    public void restaurar(Long id) throws Exception {
+        if (id == null) {
+            throw new Exception("ID da imagem não foi fornecido");
+        }
+        
+        imagemDAO.restaurar(id);
+    }
+    
 }

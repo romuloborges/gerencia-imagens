@@ -42,6 +42,10 @@ public abstract class ListaImagemState {
         
     }
     
+    public void desfazerExclusao() {
+        
+    }
+    
     public void fechar() {
         presenter.getView().setVisible(false);
         presenter.getView().dispose();

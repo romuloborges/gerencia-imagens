@@ -83,5 +83,30 @@ public class ImagemSqliteDAO implements IImagemDAO {
             throw new Exception("Erro ao inserir");
         }
     }
+
+    @Override
+    public void restaurar(Long id) throws Exception {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        
+        try {
+            String sql = "UPDATE Imagem SET excluida = 0 WHERE id = ?;";
+
+            conn = this.manager.conectar();
+            this.manager.abreTransacao();
+
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, id);
+            ps.executeUpdate();
+
+            this.manager.fechaTransacao();
+            this.manager.close(conn, ps);
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close(conn, ps);
+            System.out.println(ex.getMessage());
+            throw new Exception("Erro ao inserir");
+        }
+    }
     
 }

@@ -1,11 +1,15 @@
 package br.ufes.gerenciaimagens.presenter.imagem.state;
 
+import br.ufes.gerenciaimagens.memento.MementoImagem;
+import br.ufes.gerenciaimagens.memento.Zelador;
 import br.ufes.gerenciaimagens.model.Imagem;
 import br.ufes.gerenciaimagens.presenter.imagem.ListaImagemPresenter;
 import br.ufes.gerenciaimagens.presenter.imagem.ListaImagemView;
 import br.ufes.gerenciaimagens.presenter.imagem.compartilha.CompartilhaImagemPresenter;
 import br.ufes.gerenciaimagens.presenter.imagem.visualiza.VisualizaImagemPresenter;
 import br.ufes.gerenciaimagens.service.ImagemService;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +36,7 @@ public class ListagemImagensState extends ListaImagemState {
         view.getButtonExcluir().setVisible(true);
         view.getButtonVisualizar().setVisible(true);
         view.getButtonGerenciarPermissoes().setVisible(false);
+        view.getButtonDesfazerExclusao().setVisible(true);
     }
     
     private void initListeners() {
@@ -47,6 +52,10 @@ public class ListagemImagensState extends ListaImagemState {
         
         view.getButtonVisualizar().addActionListener((ae) -> {
             visualizar();
+        });
+        
+        view.getButtonDesfazerExclusao().addActionListener((ae) -> {
+            desfazerExclusao();
         });
     }
 
@@ -84,6 +93,7 @@ public class ListagemImagensState extends ListaImagemState {
             }
             if (imagem != null) {
                 try {
+                    Zelador.getInstancia().add(imagem.criar());
                     int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "", JOptionPane.OK_CANCEL_OPTION);
                     
                     if (opcao == 0) {
@@ -103,6 +113,21 @@ public class ListagemImagensState extends ListaImagemState {
     @Override
     public void compartilhar() {
         new CompartilhaImagemPresenter(presenter.getContainer(), presenter.getIdUsuarioLogado(), presenter.getImagemSelecionada());
+    }
+
+    @Override
+    public void desfazerExclusao() {
+        try {
+            MementoImagem ultimo = Zelador.getInstancia().getUltimo();
+            if (ultimo != null) {
+                Imagem imagem = new Imagem();
+                imagem.restaurar(ultimo);
+                imagemService.restaurar(imagem.getId());
+                presenter.buscarImagens();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

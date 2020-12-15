@@ -1,5 +1,6 @@
 package br.ufes.gerenciaimagens.model;
 
+import br.ufes.gerenciaimagens.memento.MementoImagem;
 import br.ufes.gerenciaimagens.model.interfaces.IImagem;
 import javax.swing.ImageIcon;
 
@@ -21,6 +22,16 @@ public class Imagem implements IImagem {
         this.id = id;
         this.caminho = caminho;
         this.excluida = excluida;
+    }
+    
+    public MementoImagem criar() {
+        return new MementoImagem(id, caminho, excluida);
+    }
+    
+    public void restaurar(MementoImagem memento) {
+        this.id = memento.getId();
+        this.caminho = memento.getCaminho();
+        this.excluida = memento.isExcluida();
     }
     
     @Override

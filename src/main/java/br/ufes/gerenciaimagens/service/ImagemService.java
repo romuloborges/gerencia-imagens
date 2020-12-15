@@ -25,4 +25,8 @@ public class ImagemService {
         imagemRepository.excluir(id);
     }
     
+    public void restaurar(Long id) throws Exception {
+        imagemRepository.restaurar(id);
+    }
+    
 }

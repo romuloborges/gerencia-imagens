@@ -27,7 +27,7 @@ public class ImagemProxy implements IImagem {
     @Override
     public ImageIcon getImageIcon() throws Exception {
         BufferedImage img = ImageIO.read(new File(imagem.getCaminho()));
-        Image scaled = img.getScaledInstance(410, 180, Image.SCALE_SMOOTH);
+        Image scaled = img.getScaledInstance(100, 100, Image.SCALE_FAST);
 
         return new ImageIcon(scaled);
     }

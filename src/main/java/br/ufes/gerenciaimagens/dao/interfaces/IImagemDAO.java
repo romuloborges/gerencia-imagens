@@ -11,5 +11,6 @@ public interface IImagemDAO {
     
     public List<Imagem> obterTodasNaoExcluidas() throws Exception;
     public void excluir(Long id) throws Exception;
+    public void restaurar(Long id) throws Exception;
     
 }

@@ -36,6 +36,7 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
         buttonExcluir = new javax.swing.JButton();
         buttonCompartilhar = new javax.swing.JButton();
         buttonGerenciarPermissoes = new javax.swing.JButton();
+        buttonDesfazerExclusao = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -51,6 +52,8 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
 
         buttonGerenciarPermissoes.setText("Gerenciar Permissões");
 
+        buttonDesfazerExclusao.setText("Desfazer exclusão");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,7 +64,9 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(buttonDesfazerExclusao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonGerenciarPermissoes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCompartilhar)
@@ -79,7 +84,8 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
                     .addComponent(buttonVisualizar)
                     .addComponent(buttonExcluir)
                     .addComponent(buttonCompartilhar)
-                    .addComponent(buttonGerenciarPermissoes))
+                    .addComponent(buttonGerenciarPermissoes)
+                    .addComponent(buttonDesfazerExclusao))
                 .addContainerGap())
         );
 
@@ -106,8 +112,13 @@ public class ListaImagemView extends javax.swing.JInternalFrame {
         return buttonVisualizar;
     }
 
+    public JButton getButtonDesfazerExclusao() {
+        return buttonDesfazerExclusao;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCompartilhar;
+    private javax.swing.JButton buttonDesfazerExclusao;
     private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonGerenciarPermissoes;
     private javax.swing.JButton buttonVisualizar;
