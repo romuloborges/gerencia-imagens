@@ -62,10 +62,12 @@ public class SolicitaPermissaoVisualizarState extends VisualizaImagemPresenterSt
                         Usuario usuarioLogado = usuarioService.getById(presenter.getIdUsuarioLogado());
                         notificacaoService.enviarNotificacaoParaAdministradores(usuarioLogado.getNome() + " solicitou acesso de visualização na imagem", presenter.getIdUsuarioLogado(), idImagem, TipoNotificacao.SOLICITACAO_VISUALIZACAO);
                         JOptionPane.showMessageDialog(null, "Sua solicitação foi enviada e os administradores foram notificados", "", JOptionPane.DEFAULT_OPTION);
+                        fechar();
                     }
                 } else if (!view.getCheckboxSomenteNesta().isSelected() && view.getCheckboxTodasImagens().isSelected()) {
                     notificacaoService.enviarNotificacaoParaAdministradores("Uma mensagem nova", presenter.getIdUsuarioLogado(), idImagem, TipoNotificacao.SOLICITACAO_VISUALIZACAO);
                     JOptionPane.showMessageDialog(null, "Sua solicitação foi enviada e os administradores foram notificados", "", JOptionPane.DEFAULT_OPTION);
+                    fechar();
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecione apenas uma opção", "", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -73,8 +75,6 @@ public class SolicitaPermissaoVisualizarState extends VisualizaImagemPresenterSt
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
             }
         }
-        
-        fechar();
     }
     
 }
