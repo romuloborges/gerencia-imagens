@@ -36,6 +36,10 @@ public class UsuarioRepository {
             throw new Exception("Tipo do usuário informado é inválido");
         }
         
+        if (loginExists(usuario.getLogin())) {
+            throw new Exception("Este login já está sendo usado");
+        }
+        
         usuarioDAO.insert(usuario);
     }
     
